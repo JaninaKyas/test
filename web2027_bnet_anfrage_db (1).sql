@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 31. Mai 2024 um 15:27
+-- Erstellungszeit: 11. Jun 2024 um 16:45
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
@@ -6821,11 +6821,11 @@ INSERT INTO `hardware` (`id`, `customer_class_id`, `name`, `price`, `note`, `cre
 (6, 2, 'AVM Fritz!Fon C6 (DECT)', '210.00', 'TrioSet', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (7, 2, 'AVM Fritz!Repeater 1200AX', '90.00', '', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (8, 2, 'AVM Fritz!Powerline 540E WLAN-Set', '150.00', '', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
-(9, 0, 'Brehna.net Router VoIP', '180.00', '(4x LAN, WLAN, VoIP-TK, ISDN, DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 1),
-(10, 0, 'AVM Fritz!Box Fon Standard', '100.00', '(4x LAN, WLAN, DECT, Telefonie)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 1),
-(11, 0, 'Tischtelefon mit grossen Tasten', '75.00', '(Doro/ Gigaset)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 1),
-(12, 0, 'AVM Fritz Fon C5', '75.00', '(VoIP/ DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 1),
-(13, 0, 'Amazon Echo Spot', '180.00', 'inkl. Alex Installation und Einweisung', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 1);
+(9, 4, 'Brehna.net Router VoIP', '180.00', '(4x LAN, WLAN, VoIP-TK, ISDN, DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
+(10, 3, 'AVM Fritz!Box Fon Standard', '100.00', '(4x LAN, WLAN, DECT, Telefonie)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
+(11, 3, 'Tischtelefon mit grossen Tasten', '75.00', '(Doro/ Gigaset)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
+(12, 3, 'AVM Fritz Fon C5', '75.00', '(VoIP/ DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
+(13, 3, 'Amazon Echo Spot', '180.00', 'inkl. Alex Installation und Einweisung', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7108,12 +7108,12 @@ CREATE TABLE `service` (
 
 INSERT INTO `service` (`id`, `customer_class_id`, `name`, `price`, `note`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
 (1, 1, '... bitte auswählen ...', '0.00', '', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
-(2, 1, 'IT-Sicherheitspaket und Updateservice je Endgerät', '9.95', '', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
+(2, 1, 'IT-Sicherheitspaket und Updateservice je Endgerät', '9.95', '', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 1),
 (4, 2, 'Bereitstellungspreis Tarif/Anschluss', '75.00', 'inkl. Techniker für Router/ Telefonie', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
 (5, 2, 'Einrichtung Komfort', '79.00', 'max. 5 Endgeräte, Telefone und IT-Check AVM', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
-(6, 1, 'Kabel, Anschluss und Installation nach Kundenwunsch', '0.00', '', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
-(7, 1, 'Einrichtungsentgelt', '100.00', '(inkl. B.net Routerkonfig)', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
-(8, 1, 'Einrichtungspauschale', '100.00', '(TAE/ RJ45 Dose, Kabel & Installation, Einweisung)', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0);
+(6, 4, 'Kabel, Anschluss und Installation nach Kundenwunsch', '0.00', '', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
+(7, 4, 'Einrichtungsentgelt', '100.00', '(inkl. B.net Routerkonfig)', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0),
+(8, 3, 'Einrichtungspauschale', '100.00', '(TAE/ RJ45 Dose, Kabel & Installation, Einweisung)', '2024-04-08 09:10:23', 'JANINA', '2024-04-08 09:10:23', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7147,6 +7147,7 @@ CREATE TABLE `signature` (
 
 CREATE TABLE `software` (
   `id` int(11) NOT NULL,
+  `cClassId` int(11) NOT NULL DEFAULT '-1',
   `name` char(150) NOT NULL DEFAULT '',
   `price` decimal(10,2) NOT NULL DEFAULT '0.00',
   `note` char(100) NOT NULL DEFAULT '',
@@ -7161,10 +7162,10 @@ CREATE TABLE `software` (
 -- Daten für Tabelle `software`
 --
 
-INSERT INTO `software` (`id`, `name`, `price`, `note`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, '... bitte auswählen ...', '0.00', '(BSI Zertifiziert bis 25 User, inkl. Service)', '2024-04-08 09:10:13', 'JANINA', '2024-04-08 09:10:13', 'JANINA', 0),
-(2, 'B.net NextGen UTM-Firewall Appliance', '95.00', '(BSI Zertifiziert bis 25 User, inkl. Service)', '2024-04-08 09:10:13', 'JANINA', '2024-04-08 09:10:13', 'JANINA', 0),
-(3, 'B.net NextGen UTM-Firewall Appliance', '170.00', '(BSI Zertifiziert bis 50 User, inkl. Service)', '2024-04-08 09:10:13', 'JANINA', '2024-04-08 09:10:13', 'JANINA', 0);
+INSERT INTO `software` (`id`, `cClassId`, `name`, `price`, `note`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, -1, '... bitte auswählen ...', '0.00', '(BSI Zertifiziert bis 25 User, inkl. Service)', '2024-04-08 09:10:13', 'JANINA', '2024-04-08 09:10:13', 'JANINA', 0),
+(2, 4, 'B.net NextGen UTM-Firewall Appliance', '95.00', '(BSI Zertifiziert bis 25 User, inkl. Service)', '2024-04-08 09:10:13', 'JANINA', '2024-04-08 09:10:13', 'JANINA', 0),
+(3, 4, 'B.net NextGen UTM-Firewall Appliance', '170.00', '(BSI Zertifiziert bis 50 User, inkl. Service)', '2024-04-08 09:10:13', 'JANINA', '2024-04-08 09:10:13', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7404,21 +7405,29 @@ CREATE TABLE `tariff_x_technology` (
 --
 
 INSERT INTO `tariff_x_technology` (`id`, `tariff_id`, `technology_id`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 2, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(2, 2, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(3, 2, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(4, 3, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(5, 3, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(6, 3, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(7, 4, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(8, 4, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(9, 4, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(10, 5, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(11, 5, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(12, 5, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(13, 6, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(14, 7, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(15, 14, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0);
+(1, 2, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(2, 3, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(3, 4, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(4, 5, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(5, 6, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(6, 7, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(7, 8, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(8, 9, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(9, 10, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(10, 11, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(11, 12, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(12, 13, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(13, 14, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(14, 2, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(15, 3, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(16, 4, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(17, 5, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(18, 14, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(19, 2, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(20, 3, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(21, 4, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(22, 5, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(23, 14, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -8031,7 +8040,7 @@ ALTER TABLE `tariff_x_tariff_option`
 -- AUTO_INCREMENT für Tabelle `tariff_x_technology`
 --
 ALTER TABLE `tariff_x_technology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT für Tabelle `technology`
