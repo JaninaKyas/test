@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 10. Jun 2024 um 16:23
+-- Erstellungszeit: 12. Jun 2024 um 16:40
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
@@ -5729,7 +5729,9 @@ INSERT INTO `bank` (`id`, `name`, `bic`, `createDate`, `createUser`, `updateDate
 (4981, 'VakifBank International', 'TVBADEFFXXX', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0),
 (4982, 'Vietinbank', 'ICBVDEFFXXX', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0),
 (4983, 'Volks-, Raiffeisen-, Sparda- and Genossenschaftsbanks (all branches)', 'GENODEXXXXX', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0),
-(4984, 'Weberbank', 'WELADED1WBB', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0);
+(4984, 'Weberbank', 'WELADED1WBB', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0),
+(4985, '', 'vb', '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0),
+(4986, '', 'cv', '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -6280,7 +6282,8 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `legal_form_id`, `customerNr`, `salut`, `title`, `fName`, `lName`, `company`, `birthDate`, `taxNr`, `appartmentNr`, `phone`, `mobil`, `eMail`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
 (1, -1, '1', 'Herr', '', 'J', 'Hg', 'Hhj', '0000-00-00', '', '', '', '', 'Janinakyas@web.de', '2024-05-27 09:48:08', 'JANINA', '2024-05-27 09:48:08', 'JANINA', 0),
-(2, -1, '2', 'Herr', '', 'f', 'f', '', '0000-00-00', '', '', '', '123456', 'janinakyas@web.de', '2024-05-30 13:39:47', 'JANINA', '2024-05-30 13:39:47', 'JANINA', 0);
+(2, -1, '2', 'Herr', '', 'f', 'f', '', '0000-00-00', '', '', '', '123456', 'janinakyas@web.de', '2024-05-30 13:39:47', 'JANINA', '2024-05-30 13:39:47', 'JANINA', 0),
+(3, -1, '3', 'Herr', '', 'g', 'g', '', '0000-00-00', '', '', '', '123', 'janinakyas@web.de', '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -6379,6 +6382,14 @@ CREATE TABLE `customer_ftth_request` (
   `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Daten für Tabelle `customer_ftth_request`
+--
+
+INSERT INTO `customer_ftth_request` (`id`, `customer_id`, `post_address_id`, `tech_address_id`, `debator_id`, `con_kind_id`, `selected_tech_id`, `rate_id`, `house_owner_id`, `intro_house_id`, `kind_point_id`, `main_num_id`, `sub_num_id`, `cnt_units`, `complete_date`, `intro_else`, `isAgbConfirm`, `isSafeDataConfirm`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 3, 137, 137, 1, 1, 2, 14, 1, 2, 2, -1, -1, 0, '', '', 1, 1, '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0),
+(2, 3, 137, 137, 2, 1, 2, 14, 1, 2, 2, -1, -1, 0, '', '', 1, 1, '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -6434,6 +6445,14 @@ CREATE TABLE `debator` (
   `updateUser` char(50) NOT NULL DEFAULT '',
   `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `debator`
+--
+
+INSERT INTO `debator` (`id`, `address_id`, `country_id`, `bank_id`, `name`, `iban`, `isPayRecur`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 137, 3, 4985, 'g, g', 'vb', 1, '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0),
+(2, 137, 3, 4986, 'g, g', 'cv', 1, '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -6821,11 +6840,13 @@ INSERT INTO `hardware` (`id`, `customer_class_id`, `name`, `price`, `note`, `cre
 (6, 2, 'AVM Fritz!Fon C6 (DECT)', '210.00', 'TrioSet', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (7, 2, 'AVM Fritz!Repeater 1200AX', '90.00', '', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (8, 2, 'AVM Fritz!Powerline 540E WLAN-Set', '150.00', '', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
-(9, 4, 'Brehna.net Router VoIP', '180.00', '(4x LAN, WLAN, VoIP-TK, ISDN, DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 1),
+(9, 4, 'Brehna.net Router VoIP', '180.00', '(4x LAN, WLAN, VoIP-TK, ISDN, DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (10, 3, 'AVM Fritz!Box Fon Standard', '100.00', '(4x LAN, WLAN, DECT, Telefonie)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (11, 3, 'Tischtelefon mit grossen Tasten', '75.00', '(Doro/ Gigaset)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
 (12, 3, 'AVM Fritz Fon C5', '75.00', '(VoIP/ DECT)', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
-(13, 3, 'Amazon Echo Spot', '180.00', 'inkl. Alex Installation und Einweisung', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0);
+(13, 3, 'Amazon Echo Spot', '180.00', 'inkl. Alex Installation und Einweisung', '2024-04-08 09:10:02', 'JANINA', '2024-04-08 09:10:02', 'JANINA', 0),
+(14, -1, 'UFiber Loco GPON', '0.00', '', '2024-06-12 16:00:47', 'JANINA', '2024-06-12 16:00:47', 'JANINA', 2),
+(15, -1, 'Funkempfänger', '0.00', '', '2024-06-12 16:00:47', 'JANINA', '2024-06-12 16:00:47', 'JANINA', 2);
 
 -- --------------------------------------------------------
 
@@ -6881,6 +6902,13 @@ CREATE TABLE `house_owner` (
   `updateUser` char(50) NOT NULL DEFAULT '',
   `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `house_owner`
+--
+
+INSERT INTO `house_owner` (`id`, `address_id`, `floor_address_id`, `title`, `fName`, `lName`, `company`, `hr_number`, `fFloor`, `fFloorKind`, `fDFloor`, `mail`, `mobil`, `phone`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 137, 137, '', 'g', 'g', '', '', '', '', '', 'janinakyas@web.de', '123', '', '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7405,21 +7433,29 @@ CREATE TABLE `tariff_x_technology` (
 --
 
 INSERT INTO `tariff_x_technology` (`id`, `tariff_id`, `technology_id`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 2, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(2, 2, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(3, 2, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(4, 3, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(5, 3, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(6, 3, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(7, 4, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(8, 4, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(9, 4, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(10, 5, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(11, 5, 3, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(12, 5, 5, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(13, 6, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(14, 7, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0),
-(15, 14, 2, '2024-04-08 12:54:11', 'JANINA', '2024-04-08 12:54:11', 'JANINA', 0);
+(1, 2, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(2, 3, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(3, 4, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(4, 5, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(5, 6, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(6, 7, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(7, 8, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(8, 9, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(9, 10, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(10, 11, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(11, 12, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(12, 13, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(13, 14, 2, '2024-06-11 12:45:50', 'JANINA', '2024-06-11 12:45:50', 'JANINA', 0),
+(14, 2, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(15, 3, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(16, 4, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(17, 5, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(18, 14, 3, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(19, 2, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(20, 3, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(21, 4, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(22, 5, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0),
+(23, 14, 5, '2024-06-11 12:54:47', 'JANINA', '2024-06-11 12:54:47', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7804,7 +7840,7 @@ ALTER TABLE `asb_availability_x_customer`
 -- AUTO_INCREMENT für Tabelle `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4985;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4987;
 
 --
 -- AUTO_INCREMENT für Tabelle `commissioned_house_types`
@@ -7876,7 +7912,7 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT für Tabelle `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer_class`
@@ -7894,7 +7930,7 @@ ALTER TABLE `customer_connection_requests`
 -- AUTO_INCREMENT für Tabelle `customer_ftth_request`
 --
 ALTER TABLE `customer_ftth_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer_x_technology`
@@ -7912,7 +7948,7 @@ ALTER TABLE `dataholder`
 -- AUTO_INCREMENT für Tabelle `debator`
 --
 ALTER TABLE `debator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `expansion_area`
@@ -7930,7 +7966,7 @@ ALTER TABLE `expansion_state`
 -- AUTO_INCREMENT für Tabelle `hardware`
 --
 ALTER TABLE `hardware`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT für Tabelle `house_intro_types`
@@ -7942,7 +7978,7 @@ ALTER TABLE `house_intro_types`
 -- AUTO_INCREMENT für Tabelle `house_owner`
 --
 ALTER TABLE `house_owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `legal_form`
@@ -8032,7 +8068,7 @@ ALTER TABLE `tariff_x_tariff_option`
 -- AUTO_INCREMENT für Tabelle `tariff_x_technology`
 --
 ALTER TABLE `tariff_x_technology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT für Tabelle `technology`
