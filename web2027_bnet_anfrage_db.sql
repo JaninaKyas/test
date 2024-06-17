@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 12. Jun 2024 um 16:40
+-- Erstellungszeit: 17. Jun 2024 um 16:49
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
@@ -5731,7 +5731,8 @@ INSERT INTO `bank` (`id`, `name`, `bic`, `createDate`, `createUser`, `updateDate
 (4983, 'Volks-, Raiffeisen-, Sparda- and Genossenschaftsbanks (all branches)', 'GENODEXXXXX', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0),
 (4984, 'Weberbank', 'WELADED1WBB', '2024-05-29 10:02:37', 'JANINA', '2024-05-29 10:02:37', 'JANINA', 0),
 (4985, '', 'vb', '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0),
-(4986, '', 'cv', '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0);
+(4986, '', 'cv', '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0),
+(4987, '', 'xc', '2024-06-13 15:45:27', 'JANINA', '2024-06-13 15:45:27', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -5966,6 +5967,57 @@ CREATE TABLE `contract_x_hardware` (
   `createUser` char(50) NOT NULL DEFAULT '''''',
   `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updateUser` char(50) NOT NULL DEFAULT '''''',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `contract_x_numerically`
+--
+
+CREATE TABLE `contract_x_numerically` (
+  `id` int(11) NOT NULL,
+  `contract_id` int(11) NOT NULL DEFAULT '-1',
+  `numerically_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `contract_x_service`
+--
+
+CREATE TABLE `contract_x_service` (
+  `id` int(11) NOT NULL,
+  `contract_id` int(11) NOT NULL DEFAULT '-1',
+  `service_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `contract_x_software`
+--
+
+CREATE TABLE `contract_x_software` (
+  `id` int(11) NOT NULL,
+  `contract_id` int(11) NOT NULL DEFAULT '-1',
+  `software_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
   `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -6281,9 +6333,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `legal_form_id`, `customerNr`, `salut`, `title`, `fName`, `lName`, `company`, `birthDate`, `taxNr`, `appartmentNr`, `phone`, `mobil`, `eMail`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, -1, '1', 'Herr', '', 'J', 'Hg', 'Hhj', '0000-00-00', '', '', '', '', 'Janinakyas@web.de', '2024-05-27 09:48:08', 'JANINA', '2024-05-27 09:48:08', 'JANINA', 0),
-(2, -1, '2', 'Herr', '', 'f', 'f', '', '0000-00-00', '', '', '', '123456', 'janinakyas@web.de', '2024-05-30 13:39:47', 'JANINA', '2024-05-30 13:39:47', 'JANINA', 0),
-(3, -1, '3', 'Herr', '', 'g', 'g', '', '0000-00-00', '', '', '', '123', 'janinakyas@web.de', '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0);
+(1, -1, '1', 'Herr', '', 'g', 'g', '', '0000-00-00', '', '', '', '123', 'janinakyas@web.de', '2024-06-17 13:53:42', 'JANINA', '2024-06-17 13:53:42', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -6341,15 +6391,6 @@ CREATE TABLE `customer_connection_requests` (
   `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Daten für Tabelle `customer_connection_requests`
---
-
-INSERT INTO `customer_connection_requests` (`id`, `customer_id`, `address_id`, `cxtech_id`, `conKind_id`, `selTech_id`, `rate_id`, `isWishRecall`, `recallTermin`, `isPhone`, `isPorting`, `careTermin`, `message`, `isConfirmSafeData`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 1, 105, -1, 1, -1, 9, 0, '', 0, 0, '', '', 1, '2024-05-27 09:48:08', 'JANINA', '2024-05-27 09:48:08', 'JANINA', 0),
-(2, 2, 1, -1, 1, 3, 2, 0, '', 0, 0, '', '', 1, '2024-05-30 13:39:47', 'JANINA', '2024-05-30 13:39:47', 'JANINA', 0),
-(3, 2, 34, -1, 2, 3, 2, 0, '', 0, 0, '', '', 1, '2024-05-30 13:48:41', 'JANINA', '2024-05-30 13:48:41', 'JANINA', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -6370,9 +6411,13 @@ CREATE TABLE `customer_ftth_request` (
   `kind_point_id` int(11) NOT NULL DEFAULT '-1',
   `main_num_id` int(11) NOT NULL DEFAULT '-1',
   `sub_num_id` int(11) NOT NULL DEFAULT '0',
+  `commisionId` int(11) NOT NULL DEFAULT '-1',
+  `duration_id` int(11) NOT NULL DEFAULT '-1',
   `cnt_units` int(11) NOT NULL DEFAULT '0',
   `complete_date` char(50) NOT NULL DEFAULT '',
   `intro_else` char(150) NOT NULL DEFAULT '',
+  `monthTotal` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `onceTotal` decimal(10,2) NOT NULL DEFAULT '0.00',
   `isAgbConfirm` tinyint(1) NOT NULL DEFAULT '0',
   `isSafeDataConfirm` tinyint(1) NOT NULL DEFAULT '0',
   `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -6386,9 +6431,8 @@ CREATE TABLE `customer_ftth_request` (
 -- Daten für Tabelle `customer_ftth_request`
 --
 
-INSERT INTO `customer_ftth_request` (`id`, `customer_id`, `post_address_id`, `tech_address_id`, `debator_id`, `con_kind_id`, `selected_tech_id`, `rate_id`, `house_owner_id`, `intro_house_id`, `kind_point_id`, `main_num_id`, `sub_num_id`, `cnt_units`, `complete_date`, `intro_else`, `isAgbConfirm`, `isSafeDataConfirm`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 3, 137, 137, 1, 1, 2, 14, 1, 2, 2, -1, -1, 0, '', '', 1, 1, '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0),
-(2, 3, 137, 137, 2, 1, 2, 14, 1, 2, 2, -1, -1, 0, '', '', 1, 1, '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0);
+INSERT INTO `customer_ftth_request` (`id`, `customer_id`, `post_address_id`, `tech_address_id`, `debator_id`, `con_kind_id`, `selected_tech_id`, `rate_id`, `house_owner_id`, `intro_house_id`, `kind_point_id`, `main_num_id`, `sub_num_id`, `commisionId`, `duration_id`, `cnt_units`, `complete_date`, `intro_else`, `monthTotal`, `onceTotal`, `isAgbConfirm`, `isSafeDataConfirm`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 1, 1, 1, 1, 1, 2, 14, 1, 2, 2, -1, -1, 2, 3, 0, '', '', '0.00', '5.00', 1, 1, '2024-06-17 13:53:42', 'JANINA', '2024-06-17 13:53:42', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -6451,8 +6495,8 @@ CREATE TABLE `debator` (
 --
 
 INSERT INTO `debator` (`id`, `address_id`, `country_id`, `bank_id`, `name`, `iban`, `isPayRecur`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 137, 3, 4985, 'g, g', 'vb', 1, '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0),
-(2, 137, 3, 4986, 'g, g', 'cv', 1, '2024-06-12 14:32:12', 'JANINA', '2024-06-12 14:32:12', 'JANINA', 0);
+(1, 1, 3, 4986, 'g, g', 'cv', 1, '2024-06-17 13:53:42', 'JANINA', '2024-06-17 13:53:42', 'JANINA', 0),
+(2, 102, 3, 4986, 'g g', 'cv', 1, '2024-06-17 16:24:46', 'JANINA', '2024-06-17 16:24:46', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -6811,6 +6855,106 @@ INSERT INTO `expansion_state` (`id`, `name`, `createDate`, `createUser`, `update
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `ftth_x_hardware`
+--
+
+CREATE TABLE `ftth_x_hardware` (
+  `id` int(11) NOT NULL,
+  `ftth_id` int(11) NOT NULL DEFAULT '-1',
+  `hardware_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `ftth_x_hardware`
+--
+
+INSERT INTO `ftth_x_hardware` (`id`, `ftth_id`, `hardware_id`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 1, 14, '2024-06-17 13:53:42', 'JANINA', '2024-06-17 13:53:42', 'JANINA', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `ftth_x_numerically`
+--
+
+CREATE TABLE `ftth_x_numerically` (
+  `id` int(11) NOT NULL,
+  `ftth_id` int(11) NOT NULL DEFAULT '-1',
+  `numerically_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `ftth_x_service`
+--
+
+CREATE TABLE `ftth_x_service` (
+  `id` int(11) NOT NULL,
+  `ftth_id` int(11) NOT NULL DEFAULT '-1',
+  `service_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `ftth_x_software`
+--
+
+CREATE TABLE `ftth_x_software` (
+  `id` int(11) NOT NULL,
+  `ftth_id` int(11) NOT NULL DEFAULT '-1',
+  `software_id` int(11) NOT NULL DEFAULT '-1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `ftth_x_tariff_option`
+--
+
+CREATE TABLE `ftth_x_tariff_option` (
+  `id` int(11) NOT NULL,
+  `ftthId` int(11) NOT NULL DEFAULT '-1',
+  `optionId` int(11) NOT NULL DEFAULT '-1',
+  `cnt_items` int(11) NOT NULL DEFAULT '0',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `ftth_x_tariff_option`
+--
+
+INSERT INTO `ftth_x_tariff_option` (`id`, `ftthId`, `optionId`, `cnt_items`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 1, 32, 0, '2024-06-17 13:53:42', 'JANINA', '2024-06-17 13:53:42', 'JANINA', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `hardware`
 --
 
@@ -6908,7 +7052,7 @@ CREATE TABLE `house_owner` (
 --
 
 INSERT INTO `house_owner` (`id`, `address_id`, `floor_address_id`, `title`, `fName`, `lName`, `company`, `hr_number`, `fFloor`, `fFloorKind`, `fDFloor`, `mail`, `mobil`, `phone`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 137, 137, '', 'g', 'g', '', '', '', '', '', 'janinakyas@web.de', '123', '', '2024-06-12 14:23:18', 'JANINA', '2024-06-12 14:23:18', 'JANINA', 0);
+(1, 1, 1, '', 'g', 'g', '', '', '', '', '', 'janinakyas@web.de', '123', '', '2024-06-17 13:53:42', 'JANINA', '2024-06-17 13:53:42', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7327,8 +7471,8 @@ INSERT INTO `tariff_option` (`id`, `parent_id`, `customer_class_id`, `name`, `pr
 (29, 1, 1, '2 VoIP Sprachkanäle', '0.00', '0.00', '0.00', '', 0, 0, '2024-04-08 12:46:51', 'JANINA', '2024-04-08 12:46:51', 'JANINA', 0),
 (30, 1, 1, '3 Rufnummern', '0.00', '0.00', '0.00', '', 0, 0, '2024-04-08 12:46:51', 'JANINA', '2024-04-08 12:46:51', 'JANINA', 0),
 (31, 1, 1, 'Telefonie Standard inkl. Internetflatrate, 1 VoIP Sprachkanal, 1 Rufnummer, Festnetzflat Deutschland', '4.95', '0.00', '0.00', '', 0, 0, '2024-04-08 13:00:23', 'JANINA', '2024-04-08 13:00:23', 'JANINA', 0),
-(32, 1, 2, 'Bereitstellungspreis Tarif/Anschluss', '75.00', '0.00', '0.00', 'inkl. Techniker für Router/Telefonie', 0, 0, '2024-04-22 17:11:09', 'JANINA', '2024-04-22 17:11:09', 'JANINA', 1),
-(33, 1, 2, 'Einrichtung Komfort für max. 5 Endgeräte, Telefone und IT-Check AVM', '79.00', '0.00', '0.00', '', 0, 0, '2024-04-22 17:20:27', 'JANINA', '2024-04-22 17:20:27', 'JANINA', 1);
+(32, 1, 2, 'Bereitstellungspreis Tarif/Anschluss', '75.00', '0.00', '0.00', 'inkl. Techniker für Router/Telefonie', 0, 0, '2024-04-22 17:11:09', 'JANINA', '2024-04-22 17:11:09', 'JANINA', 0),
+(33, 1, 2, 'Einrichtung Komfort für max. 5 Endgeräte, Telefone und IT-Check AVM', '79.00', '0.00', '0.00', '', 0, 0, '2024-04-22 17:20:27', 'JANINA', '2024-04-22 17:20:27', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -7623,6 +7767,24 @@ ALTER TABLE `contract_x_hardware`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indizes für die Tabelle `contract_x_numerically`
+--
+ALTER TABLE `contract_x_numerically`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `contract_x_service`
+--
+ALTER TABLE `contract_x_service`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `contract_x_software`
+--
+ALTER TABLE `contract_x_software`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `contract_x_tariff_option`
 --
 ALTER TABLE `contract_x_tariff_option`
@@ -7686,6 +7848,36 @@ ALTER TABLE `expansion_area`
 -- Indizes für die Tabelle `expansion_state`
 --
 ALTER TABLE `expansion_state`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `ftth_x_hardware`
+--
+ALTER TABLE `ftth_x_hardware`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `ftth_x_numerically`
+--
+ALTER TABLE `ftth_x_numerically`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `ftth_x_service`
+--
+ALTER TABLE `ftth_x_service`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `ftth_x_software`
+--
+ALTER TABLE `ftth_x_software`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `ftth_x_tariff_option`
+--
+ALTER TABLE `ftth_x_tariff_option`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7840,7 +8032,7 @@ ALTER TABLE `asb_availability_x_customer`
 -- AUTO_INCREMENT für Tabelle `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4987;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4988;
 
 --
 -- AUTO_INCREMENT für Tabelle `commissioned_house_types`
@@ -7897,6 +8089,24 @@ ALTER TABLE `contract_x_hardware`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT für Tabelle `contract_x_numerically`
+--
+ALTER TABLE `contract_x_numerically`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `contract_x_service`
+--
+ALTER TABLE `contract_x_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `contract_x_software`
+--
+ALTER TABLE `contract_x_software`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT für Tabelle `contract_x_tariff_option`
 --
 ALTER TABLE `contract_x_tariff_option`
@@ -7912,7 +8122,7 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT für Tabelle `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer_class`
@@ -7924,13 +8134,13 @@ ALTER TABLE `customer_class`
 -- AUTO_INCREMENT für Tabelle `customer_connection_requests`
 --
 ALTER TABLE `customer_connection_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer_ftth_request`
 --
 ALTER TABLE `customer_ftth_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer_x_technology`
@@ -7961,6 +8171,36 @@ ALTER TABLE `expansion_area`
 --
 ALTER TABLE `expansion_state`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT für Tabelle `ftth_x_hardware`
+--
+ALTER TABLE `ftth_x_hardware`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT für Tabelle `ftth_x_numerically`
+--
+ALTER TABLE `ftth_x_numerically`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `ftth_x_service`
+--
+ALTER TABLE `ftth_x_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `ftth_x_software`
+--
+ALTER TABLE `ftth_x_software`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `ftth_x_tariff_option`
+--
+ALTER TABLE `ftth_x_tariff_option`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `hardware`
